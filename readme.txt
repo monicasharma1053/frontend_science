@@ -1,3 +1,3 @@
 Heroku Hosting: 
 
-frontend-science.herokuapp.com
+http://frontend-science.herokuapp.com/
