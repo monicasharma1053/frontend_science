@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Science FrontEnd</title>
+
+	<link rel="stylesheet" href="css/global.css">
+
+</head>
+<body>
+<script>
+	
+	var params = {
+        feature: 'popular',
+        consumer_key: '5m5ALqjAbzAL1Cnszfu0DMUIZRL4jY2crYnDlGgt',
+        sort: 'rating',
+        rpp:'10',
+        callback: 'callback',
+    },
+    uriParams = '',
+    url = '';
+
+	for (paramName in params) {
+    	uriParams += '&' + paramName + '=' + params[paramName];
+	}
+
+	var url = 'https://api.500px.com/v1/' + 'photos.jsonp' + '?' + uriParams;
+
+	//JSONP request
+	tag = document.createElement('script');
+	tag.src = url;
+	document.body.appendChild(tag);
+
+	callback = function(e){
+		for (i = 0; i < e.photos.length; i++) {
+        var img = document.createElement('img');
+        img.src = e.photos[i].image_url;
+        document.body.appendChild(img); 
+    }
+	}
+</script>
+</body>
+</html>
